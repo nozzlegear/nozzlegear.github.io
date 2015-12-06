@@ -1,0 +1,44 @@
+{
+  "name": "Nozzlegear_Software",
+  "version": "1.0.0",
+  "authors": [
+    "Joshua Harms <joshua@nozzlegear.com>"
+  ],
+  "description": "KMSignalR",
+  "license": "NONE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "winjs": "~4.3.0",
+    "knockout-winjs": "~2.3.0",
+    "knockout": "~3.3.0",
+    "lodash": "~3.10.1",
+    "reqwest": "~2.0.3",
+    "moment": "~2.10.6",
+    "YeahToast": "https://github.com/Tboda/YeahToast.git",
+    "winjs-grid": "~0.9.0",
+    "blueimp-md5": "~1.1.1"
+  },
+  "exportsOverride": {
+    "reqwest": {
+      "": "reqwest*js"
+    },
+    "winjs": {
+      "css": "css/",
+      "js": "js/",
+      "fonts": "fonts/"
+    },
+    "YeahToast": {
+      "": "lib/YeahToast.js"
+    },
+    "winjs-grid": {
+      "": ["dist/css/*.css", "dist/css/*.map" ],
+      "min": "dist/css/min/*"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings Page</title>
+
+    <link href="settings.css" rel="stylesheet" />
+</head>
+<body>
+    <section role="main" class="settings page-section with-title ms-grid">
+        <h4 class="win-type-title title">
+            Settings
+        </h4>
+        <div class="setting">
+            <h4 class="win-type-subtitle">
+                Background Notifications
+            </h4>
+            <div data-bind="winToggleSwitch: { checked: Notifications.Enabled, disabled: IsLoading }"></div>
+            <label class="win-type-label block">Update live tile every:</label>
+            <select class="win-textbox"
+                    data-bind="options: [{ Text: '15 Minutes', Value: 15 }, { Text: '30 Minutes', Value: 30 }, {Text: '60 Minutes', Value: 60}, {Text: '12 Hours', Value: 720}, { Text: '24 Hours', Value: 1440}], optionsText: 'Text', optionsValue: 'Value', value: Notifications.Timer, disable: IsLoading "></select>
+            <progress class="loading left" style="display:none;" data-bind="visible: IsLoading() === true"></progress>
+        </div>
+    </section>
+</body>
+</html>

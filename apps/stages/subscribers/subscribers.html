@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+
+    <link href="subscribers.css" rel="stylesheet" />
+</head>
+<body>
+    <section role="main" 
+             class="home page-section with-title ms-grid">
+        <progress class="loading" 
+                  style="display:none;" 
+                  data-bind="visible: IsLoading() === true"></progress>
+        <h4 class="win-type-title title text-center" data-bind="text: (SubscribedAccounts().length || 0) + ' Total Subscribers'">
+        </h4>
+        <section class="data-container" 
+                 id="data-container" 
+                 style="display:none;" 
+                 data-bind="visible: IsLoading() === false, foreach: SubscribedAccounts">
+            <div class="subscriber ms-row vc">
+                <div class="xs-col-4-24 nb">
+                    <img class="img-circle img-bordered centered"
+                         style="max-width:90%; opacity:.9;"
+                         data-bind="attr: { src: $root.GravatarHash(accountOwner) }" />
+                </div>
+                <div class="xs-col-14-24 m-col-9-24 nb">
+                    <p class="win-type-body name win-type-ellipsis" 
+                       data-bind="text: shopifyShopName"></p>
+                    <p class="win-type-body email win-type-ellipsis"
+                       data-bind="text: accountOwner"></p>
+                </div>
+                <div class="m-col-5-24 nb hide show-m">
+                    <p class="win-type-body created" 
+                       data-bind="text: moment(dateCreated).format('MMMM Do, YYYY')"></p>
+                </div>
+                <div class="xs-col-6-24 nb">
+                    <p class="win-type-body plan-name hide show-m" 
+                       data-bind="text: plan.name"></p>
+                    <p class="win-type-body plan-value win-type-ellipsis">
+                        <strong data-bind="text: '$' + plan.value"></strong>
+                        <br class="hide-m" />
+                        <span>per month.</span>
+                    </p>
+                </div>
+                <hr />
+            </div>
+        </section>
+    </section>
+</body>
+</html>
