@@ -7,7 +7,7 @@ module.exports = function (grunt)
     grunt.initConfig({
         bom: {
             addBom: {
-                src: ["src/**/*.js", "src/**/*.css"],
+                src: ["apps/**/*.js", "apps/**/*.css", "lib/**/*.js", "lib/**/*.css"],
                 options: {
                     add: true
                 }
@@ -30,13 +30,14 @@ module.exports = function (grunt)
                     "apps/stages/app.css": "apps/stages/app.less",
                     "apps/stages/financials/financials.css": "apps/stages/financials/financials.less",
                     "apps/stages/subscribers/subscribers.css": "apps/stages/subscribers/subscribers.less",
-                    "apps/stages/settings/settings.css": "apps/stages/settings/settings.less"
+                    "apps/stages/settings/settings.css": "apps/stages/settings/settings.less",
+                    "apps/stages/login/login.css":"apps/stages/login/login.less"
                 }
             }
         },
         uglify: {
             options: {
-                mangle: false,
+                mangle: true,
                 sourceMap: true
             },
             libs: {
@@ -53,6 +54,18 @@ module.exports = function (grunt)
                         "lib/knockout-winjs/knockout-winjs.js",
                         "lib/custom/knockout.stopbinding/knockout.stopbinding.js",
                         "lib/custom/utilities/utilities.js"
+                    ]
+                }
+            },
+            stages: {
+                files: {
+                    "apps/stages/app.min.js": [
+                        "lib/custom/stagesclient/stagesclient.js",
+                        "apps/stages/login/logincontroller.js",
+                        "apps/stages/financials/financialcontroller.js",
+                        "apps/stages/subscribers/subscribercontroller.js",
+                        "apps/stages/settings/settingscontroller.js",
+                        "apps/stages/main.js"
                     ]
                 }
             }
@@ -99,7 +112,7 @@ module.exports = function (grunt)
 
     //Register named tasks
     grunt.registerTask('addBom', ['bom:addBom']);
-    grunt.registerTask("build", ["typescript", "bom", "less", "uglify", "cssmin"])
+    grunt.registerTask("build", ["typescript", "less", "uglify", "cssmin", "bom"])
 
     // define the default task that can be run just by typing "grunt" on the command line
     grunt.registerTask('default', []);

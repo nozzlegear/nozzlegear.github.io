@@ -1,0 +1,17 @@
+﻿CACHE MANIFEST
+
+# Explicitly cached files
+CACHE:
+../../lib/libs.min.js
+../../lib/winjs/css/ui-dark.min.css
+../../lib/winjs-grid/min/mscom-grid.min.css
+index.html
+app.min.css
+financials/financials.html
+login/login.html
+settings/settings.html
+subscribers/subscribers.html
+
+# All other resources (e.g. sites) require the user to be online. 
+NETWORK:
+*

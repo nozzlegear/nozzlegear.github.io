@@ -44,9 +44,24 @@
 
         export function ShowDialog(title: string, message: string)
         {
-            alert(message);
+            var div = document.createElement("div");
+            var p = document.createElement("p");
+            p.innerText = message;
 
-            // TODO: Replace alert with WinJS dialog.
+            //Add the paragraph to the div element
+            div.appendChild(p);
+
+            var dialog = new WinJS.UI.ContentDialog(div, { title: title, primaryCommandText: "Okay" });
+
+            //Dispose the dialog after the user closes it.
+            dialog.onafterhide = (event) =>
+            {
+                dialog.dispose();
+            };
+
+            //Add the dialog to the body and show it
+            document.body.appendChild(dialog.element);
+            dialog.show();
         }
     }
 }

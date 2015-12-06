@@ -75,7 +75,7 @@ module App.Stages
                             }
                                 
                             //Navigate to the login controller.
-                            return WinJS.Navigation.navigate(SubscriberController.PageUrl, WinJS.Navigation.state);
+                            return WinJS.Navigation.navigate(LoginController.PageUrl, WinJS.Navigation.state);
                         }).then(null, (error) => { console.log("Error loading page", error) });
 
                     appPromise.done(() => { console.log("Done"); }, (error) => { console.log("Error loading page 2", error); });
@@ -97,11 +97,11 @@ module App.Stages
         /**
         Navigates the user to the subscribers page.
         */
-        static HandleNavigateToSubscribers = (context, event) =>
+        static HandleNavigateToSubscribers = (context, eventOrState) =>
         {
             if (Main.CurrentPage() !== SubscriberController.PageId)
             {
-                WinJS.Navigation.navigate(SubscriberController.PageUrl);
+                WinJS.Navigation.navigate(SubscriberController.PageUrl, eventOrState);
 
                 Main.CloseSplitviewPane();
             };

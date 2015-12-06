@@ -3,7 +3,7 @@ module App.Stages
 {
     export class SubscriberController
     {
-        constructor(state?: { Accounts: Stages.Entities.API.Account[] })
+        constructor(state?: Entities.SubscriberController.ExpectedState)
         {
             this.RegisterKnockoutSubscriptions();
 
@@ -176,7 +176,9 @@ module App.Stages
                 },
                 error: (err) =>
                 {
-                    alert("Error loading SubscriberController.");
+                    App.Utils.ShowDialog("Error", "Failed to load SubscriberController");
+
+                    console.log("Error loading SubscriberController", err);
                 },
             });
         }

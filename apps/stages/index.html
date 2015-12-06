@@ -1,24 +1,32 @@
 ﻿<!DOCTYPE html>
-<html>
+<html manifest="app.appcache">
 <head>
     <meta charset="utf-8" />
     <title>Stages Monitor</title>
 
+    <!-- Startup configuration -->
+    <link rel="manifest" href="app.webmanifest">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png" />
+
     <!-- libs -->
     <script src="../../lib/libs.min.js"></script>
     <link href="../../lib/winjs/css/ui-dark.min.css" rel="stylesheet" />
+    <link href="app.min.css" rel="stylesheet" />
     <link href="../../lib/winjs-grid/min/mscom-grid.min.css" rel="stylesheet" />
 
-    <!-- Individual page controllers. Inserted here so they can all call XController.DefinePages -->
-    <!-- In a bigger/heavier application, you could require these pages from default.ts -->
-    <script src="subscribers/SubscriberController.js"></script>
-    <script src="financials/FinancialController.js"></script>
-    <script src="settings/SettingsController.js"></script>
-
     <!-- Default resources -->
-    <link href="app.css" rel="stylesheet" />
-    <script src="../../lib/custom/StagesClient/StagesClient.js"></script>
-    <script src="app.js"></script>
+    <script src="app.min.js"></script>
 
     <style>
         #appbar {
@@ -45,39 +53,40 @@
         }
     </style>
 </head>
-<body class="win-type-body">
+<body class="win-type-body" data-bind="with: App.Stages">
     <div id="splitview" data-bind="winSplitView: { closedDisplayMode: 'none', openedDisplayMode: 'overlay' }">
-        <menu class="pane">
+        <menu class="pane" data-bind="visible: Main.CurrentPage() !== LoginController.PageId">
             <div title="Home"
                  data-bind="winSplitViewCommand: {
                     label: 'Subscribers',
                     icon: 'people',
                     oninvoked: App.Stages.Main.HandleNavigateToSubscribers},
-                    css: { active: App.Stages.Main.CurrentPage() === App.Stages.SubscriberController.PageId }"></div>
+                    css: { active: Main.CurrentPage() ===SubscriberController.PageId }"></div>
             <div title="Home"
                  data-bind="winSplitViewCommand: {
                     label: 'Financials',
                     icon: 'tag',
                     oninvoked: App.Stages.Main.HandleNavigateToFinancials},
-                    css: { active: App.Stages.Main.CurrentPage() === App.Stages.FinancialController.PageId }"></div>
+                    css: { active: Main.CurrentPage() === FinancialController.PageId }"></div>
             <div id="push-to-bottom">
                 <div>
                     <div data-bind="winSplitViewCommand: {
                         label: 'Settings',
                         icon: 'settings',
                         oninvoked: App.Stages.Main.HandleNavigateToSettings},
-                        css: { active: App.Stages.Main.CurrentPage() === App.Stages.SettingsController.PageId }"></div>
+                        css: { active: Main.CurrentPage() === SettingsController.PageId }"></div>
                 </div>
             </div>
         </menu>
+        <!-- ContentHost is bound by individual page controllers -->
         <!-- ko stopBinding: true -->
         <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: App.Stages.SubscriberController.PageUrl}"></div>
         <!-- /ko -->
     </div>
-    <menu id="appbar" data-bind="winAppBar: {closedDisplayMode: 'compact'}">
-        <button data-bind="winAppBarCommand: {label: 'Reload', type: 'button', icon:'refresh', onclick: App.Stages.Main.HandleRefreshEvent}, visible: App.Stages.Main.CurrentPage() !== App.Stages.SettingsController.PageId"></button>
+    <menu id="appbar" data-bind="winAppBar: {closedDisplayMode: 'compact'}, visible: Main.CurrentPage() !== LoginController.PageId">
+        <button data-bind="winAppBarCommand: {label: 'Reload', type: 'button', icon:'refresh', onclick: Main.HandleRefreshEvent}, visible: Main.CurrentPage() !== SettingsController.PageId"></button>
     </menu>
     <button id="splitview-toggle"
-            data-bind="winSplitViewPaneToggle: { splitView: document.getElementById('splitview') }"></button>
+            data-bind="winSplitViewPaneToggle: { splitView: document.getElementById('splitview') }, visible: Main.CurrentPage() !== LoginController.PageId"></button>
 </body>
 </html>

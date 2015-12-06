@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+﻿/// <reference path="../../typings/tsd.d.ts" />
 var App;
 (function (App) {
     var Stages;
@@ -37,7 +37,7 @@ var App;
                             if (App.Utils.LocalStorage.Retrieve("X-Stages-API-Key")) {
                                 return WinJS.Navigation.navigate(Main.CurrentPage() ? App.Stages[Main.CurrentPage()].PageUrl : Stages.SubscriberController.PageUrl, WinJS.Navigation.state);
                             }
-                            return WinJS.Navigation.navigate(Stages.SubscriberController.PageUrl, WinJS.Navigation.state);
+                            return WinJS.Navigation.navigate(Stages.LoginController.PageUrl, WinJS.Navigation.state);
                         }).then(null, function (error) { console.log("Error loading page", error); });
                         appPromise.done(function () { console.log("Done"); }, function (error) { console.log("Error loading page 2", error); });
                     }
@@ -48,9 +48,9 @@ var App;
                 app.start();
             };
             Main.CurrentPage = ko.observable();
-            Main.HandleNavigateToSubscribers = function (context, event) {
+            Main.HandleNavigateToSubscribers = function (context, eventOrState) {
                 if (Main.CurrentPage() !== Stages.SubscriberController.PageId) {
-                    WinJS.Navigation.navigate(Stages.SubscriberController.PageUrl);
+                    WinJS.Navigation.navigate(Stages.SubscriberController.PageUrl, eventOrState);
                     Main.CloseSplitviewPane();
                 }
                 ;
@@ -85,4 +85,4 @@ var App;
     })(Stages = App.Stages || (App.Stages = {}));
 })(App || (App = {}));
 App.Stages.Main.Start();
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=main.js.map

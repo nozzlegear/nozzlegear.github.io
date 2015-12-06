@@ -1,5 +1,5 @@
-body {
-  background-color: #333333;
+﻿body {
+  background-color: #2c3748;
   color: #fff;
 }
 header#appHeader {
@@ -11,7 +11,7 @@ header#appHeader {
 #contenthost {
   height: 100%;
   position: relative;
-  background-color: #333333;
+  background-color: #2c3748;
 }
 .dark-bg #contenthost {
   background-color: #2c3748;

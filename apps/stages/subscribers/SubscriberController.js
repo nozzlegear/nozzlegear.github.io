@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+﻿/// <reference path="../../../typings/tsd.d.ts" />
 var App;
 (function (App) {
     var Stages;
@@ -83,7 +83,8 @@ var App;
                         ko.applyBindings(client, element);
                     },
                     error: function (err) {
-                        alert("Error loading SubscriberController.");
+                        App.Utils.ShowDialog("Error", "Failed to load SubscriberController");
+                        console.log("Error loading SubscriberController", err);
                     },
                 });
             };

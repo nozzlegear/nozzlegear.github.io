@@ -7,3 +7,4 @@
 /// <reference path="custom/Stages.d.ts" />
 /// <reference path="custom/reqwest.d.ts" />
 /// <reference path="../lib/custom/utilities/utilities.ts" />
+/// <reference path="custom/WinJS.UI.ContentDialog.d.ts" />

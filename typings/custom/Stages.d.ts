@@ -2,6 +2,14 @@
 {
     export module Entities
     {
+        export module SubscriberController
+        {
+            export interface ExpectedState
+            {
+                Accounts?: API.Account[];
+            }
+        }
+
         export module API
         {
             /**
