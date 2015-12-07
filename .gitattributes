@@ -66,3 +66,6 @@
 # override GitHub's language detection to ignore libraries
 ###############################################################################
 lib/ linguist-vendored
+lib linguist-vendored
+lib/* linguist-vendored
+lib/**/* linguist-vendored
