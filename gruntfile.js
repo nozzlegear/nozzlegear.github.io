@@ -22,7 +22,7 @@ module.exports = function (grunt)
             }
         },
         less: {
-            app: {
+            stages: {
                 options: {
                     sourceMap: false
                 },
@@ -32,6 +32,18 @@ module.exports = function (grunt)
                     "apps/stages/subscribers/subscribers.css": "apps/stages/subscribers/subscribers.less",
                     "apps/stages/settings/settings.css": "apps/stages/settings/settings.less",
                     "apps/stages/login/login.css":"apps/stages/login/login.less"
+                }
+            },
+            ck:{
+                options: {
+                    sourceMap: false
+                },
+                files:{
+                    "apps/convertkit/app.css": "apps/convertkit/app.less",
+                    "apps/convertkit/forms/forms.css":"apps/convertkit/forms/forms.less",
+                    "apps/convertkit/home/home.css":"apps/convertkit/home/home.less",
+                    "apps/convertkit/login/login.css":"apps/convertkit/login/login.less",
+                    "apps/convertkit/settings/settings.css":"apps/convertkit/settings/settings.less"
                 }
             }
         },
@@ -66,6 +78,18 @@ module.exports = function (grunt)
                         "apps/stages/subscribers/subscribercontroller.js",
                         "apps/stages/settings/settingscontroller.js",
                         "apps/stages/main.js"
+                    ]
+                }
+            },
+            ck:{
+                files:{
+                    "apps/convertkit/app.min.js":[
+                        "lib/custom/convertkitclient/convertkit.js",
+                        "apps/convertkit/login/logincontroller.js",
+                        "apps/convertkit/forms/formscontroller.js",
+                        "apps/convertkit/home/homecontroller.js",
+                        "apps/convertkit/settings/settingscontroller.js",
+                        "apps/convertkit/main.js"
                     ]
                 }
             }

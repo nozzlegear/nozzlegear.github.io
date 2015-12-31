@@ -8,3 +8,5 @@
 /// <reference path="custom/reqwest.d.ts" />
 /// <reference path="../lib/custom/utilities/utilities.ts" />
 /// <reference path="custom/WinJS.UI.ContentDialog.d.ts" />
+/// <reference path="custom/ConvertKit.d.ts" />
+/// <reference path="./../lib/custom/Utilities/Utilities.ts" />

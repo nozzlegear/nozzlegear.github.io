@@ -1,0 +1,33 @@
+﻿section.home {
+    // background-color: #eee;
+
+    .subscribers {
+        overflow: hidden;
+        overflow-y: auto;
+        height: calc(~'100% - ' 48px);
+
+        .subscriber {
+            p.win-type-body {
+                margin: .5rem 0;
+            }
+
+            p.state {
+                text-transform: capitalize;
+            }
+
+            hr {
+                border: none;
+                border-bottom: 1px solid #ccc;
+                margin: 1rem 0;
+                width: 100%;
+            }
+
+            :last-child hr {
+            }
+        }
+    }
+
+    .subscribers .subscriber:last-child hr {
+        display: none;
+    }
+}

@@ -1,6 +1,12 @@
 ﻿/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="./financials/financialcontroller.ts" />
+/// <reference path="./settings/settingscontroller.ts" />
+/// <reference path="./login/logincontroller.ts" />
+/// <reference path="./subscribers/subscribercontroller.ts" />
 
-module App.Stages
+
+
+namespace Stages
 {
     export class Main
     {
@@ -23,7 +29,7 @@ module App.Stages
             app.onactivated = function (args)
             {
                 //Define pages 
-                _.forOwn(App.Stages, (value, key) =>
+                _.forOwn(Stages, (value, key) =>
                 {
                     if (_.has(value, "DefinePage")) 
                     {
@@ -51,9 +57,9 @@ module App.Stages
                     {
                         try
                         {
-                            if (_.has(App.Stages[key], "MergeAndRestore"))
+                            if (_.has(Stages[key], "MergeAndRestore"))
                             {
-                                Main.State[key] = App.Stages[key].MergeAndRestore(value);
+                                Main.State[key] = Stages[key].MergeAndRestore(value);
                             };
                         }
                         catch (e)
@@ -71,7 +77,7 @@ module App.Stages
                             if (Utils.LocalStorage.Retrieve("X-Stages-API-Key"))
                             {
                                 //Navigate to the last known page if available, else go to home.
-                                return WinJS.Navigation.navigate(Main.CurrentPage() ? App.Stages[Main.CurrentPage()].PageUrl : SubscriberController.PageUrl, WinJS.Navigation.state);
+                                return WinJS.Navigation.navigate(Main.CurrentPage() ? Stages[Main.CurrentPage()].PageUrl : SubscriberController.PageUrl, WinJS.Navigation.state);
                             }
                                 
                             //Navigate to the login controller.
@@ -159,4 +165,4 @@ module App.Stages
     }
 }
 
-App.Stages.Main.Start();
+Stages.Main.Start();

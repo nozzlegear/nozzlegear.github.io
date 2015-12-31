@@ -1,10 +1,12 @@
 ﻿/// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="../../../lib/custom/stagesclient/stagesclient.ts" />
-module App.Stages
+/// <reference path="./../main.ts" />
+
+namespace Stages
 {
     export class FinancialController
     {
-        constructor(state?: { Plans: Stages.Entities.API.ApplicationPlan[] })
+        constructor(state?: { Plans: Entities.API.ApplicationPlan[] })
         {
             this.RegisterKnockoutSubscriptions();
 
@@ -21,9 +23,9 @@ module App.Stages
 
         //#region Variables
 
-        private Service = new Stages.AdminFinancialService(Utils.LocalStorage.Retrieve("X-Stages-API-Key"));
+        private Service = new AdminFinancialService(Utils.LocalStorage.Retrieve("X-Stages-API-Key"));
 
-        public SubscribedPlans = ko.observableArray<Stages.Entities.API.ApplicationPlan>();
+        public SubscribedPlans = ko.observableArray<Entities.API.ApplicationPlan>();
 
         public IsLoading = ko.observable(false);
 
@@ -40,7 +42,7 @@ module App.Stages
             });
         }
 
-        private HandleLoadSuccess = (currentPlans: Stages.Entities.API.ApplicationPlan[]) =>
+        private HandleLoadSuccess = (currentPlans: Entities.API.ApplicationPlan[]) =>
         {
             this.SubscribedPlans(currentPlans);
             
@@ -154,11 +156,11 @@ module App.Stages
                 },
                 ready: (element, options) =>
                 {
-                    var client = App.Stages.Main.State.FinancialController || new FinancialController(options);
+                    var client = Main.State.FinancialController || new FinancialController(options);
 
                     //Track the current page
-                    App.Stages.Main.CurrentPage(FinancialController.PageId);
-                    App.Stages.Main.State.FinancialController = client;
+                    Main.CurrentPage(FinancialController.PageId);
+                    Main.State.FinancialController = client;
                     
                     //Define the 'client' namespace, which makes this controller available to the JS console debugger.
                     WinJS.Namespace.define("client", client);

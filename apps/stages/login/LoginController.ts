@@ -1,6 +1,7 @@
-﻿
+﻿/// <reference path="./../../../typings/tsd.d.ts" />
+/// <reference path="./../main.ts" />
 
-module App.Stages
+namespace Stages
 {
     export class LoginController
     {
@@ -15,7 +16,7 @@ module App.Stages
 
         public SecretKey = ko.observable("");
 
-        private Service: Stages.AdminSubscriberService;
+        private Service: AdminSubscriberService;
         
         //#endregion
 
@@ -40,15 +41,15 @@ module App.Stages
             }
 
             this.IsLoading(true);
-            this.Service = new Stages.AdminSubscriberService(this.SecretKey());
+            this.Service = new AdminSubscriberService(this.SecretKey());
             
             //Try to pull in subscribers. If it fails, API key was incorrect.
             var getSubs = this.Service.GetAsync("subscribed");
 
-            var success = (subs: Stages.Entities.API.Account[]) =>
+            var success = (subs: Entities.API.Account[]) =>
             {
                 //Save the key in localstorage
-                App.Utils.LocalStorage.Save("X-Stages-API-Key", this.SecretKey());
+                Utils.LocalStorage.Save("X-Stages-API-Key", this.SecretKey());
 
                 var state: Entities.SubscriberController.ExpectedState = {
                     Accounts: subs

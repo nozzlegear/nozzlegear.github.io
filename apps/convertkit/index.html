@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html manifest="app.appcache">
+<head>
+    <meta charset="utf-8" />
+    <title>ConvertKit for Web</title>
+
+    <!-- Startup configuration -->
+    <link rel="manifest" href="app.webmanifest">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png" />
+
+    <!-- Hide the mobile navigation bar when this page is used as a bookmarked app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <!-- Disable search engine indexing -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- libs -->
+    <script src="../../lib/libs.min.js"></script>
+    <link href="../../lib/winjs/css/ui-dark.min.css" rel="stylesheet" />
+    <link href="app.min.css" rel="stylesheet" />
+    <link href="../../lib/winjs-grid/min/mscom-grid.min.css" rel="stylesheet" />
+
+    <!-- Default resources -->
+    <script src="app.min.js"></script>
+
+    <style>
+        #appbar {
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        #splitview-toggle {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            /* AppBar's z-index is 999 */
+            z-index: 1004;
+        }
+
+        /* Hide the appbar overflow button. */
+        .win-commandingsurface-overflowbutton.win-appbar-overflowbutton {
+            display: none;
+        }
+
+        .win-splitview .win-splitview-pane.pane {
+            margin-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body class="win-type-body" data-bind="with: ConvertKit">
+    <div id="splitview" data-bind="winSplitView: { closedDisplayMode: 'none', openedDisplayMode: 'overlay' }">
+        <menu class="pane" data-bind="visible: Main.CurrentPage() !== LoginController.PageId">
+            <div title="Home"
+                 data-bind="winSplitViewCommand: {
+                    label: 'Subscribers',
+                    icon: 'people',
+                    oninvoked: Main.HandleNavigateToSubscribers},
+                    css: { active: Main.CurrentPage() === HomeController.PageId }"></div>
+            <div title="Home"
+                 data-bind="winSplitViewCommand: {
+                    label: 'Forms',
+                    icon: 'tag',
+                    oninvoked: Main.HandleNavigateToForms},
+                    css: { active: Main.CurrentPage() === FormsController.PageId }"></div>
+            <div id="push-to-bottom">
+                <div>
+                    <div data-bind="winSplitViewCommand: {
+                        label: 'Settings',
+                        icon: 'settings',
+                        oninvoked: Main.HandleNavigateToSettings},
+                        css: { active: Main.CurrentPage() === SettingsController.PageId }"></div>
+                </div>
+            </div>
+        </menu>
+        <!-- ContentHost is bound by individual page controllers -->
+        <!-- ko stopBinding: true -->
+        <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: ConvertKit.HomeController.PageUrl}"></div>
+        <!-- /ko -->
+    </div>
+    <menu id="appbar" data-bind="winAppBar: {closedDisplayMode: 'compact'}, visible: Main.CurrentPage() !== LoginController.PageId">
+        <button data-bind="winAppBarCommand: {label: 'Reload', type: 'button', icon:'refresh', onclick: Main.HandleRefreshEvent}, visible: Main.CurrentPage() !== SettingsController.PageId"></button>
+    </menu>
+    <button id="splitview-toggle"
+            data-bind="winSplitViewPaneToggle: { splitView: document.getElementById('splitview') }, visible: Main.CurrentPage() !== LoginController.PageId"></button>
+</body>
+</html>

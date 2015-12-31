@@ -1,4 +1,7 @@
-﻿module App.Stages
+﻿/// <reference path="./../../../typings/tsd.d.ts" />
+/// <reference path="./../main.ts" />
+
+namespace Stages
 {
     export class SettingsController
     {
@@ -86,11 +89,11 @@
                 },
                 ready: (element, options) =>
                 {
-                    var client = App.Stages.Main.State.SettingsController || new SettingsController();
+                    var client = Main.State.SettingsController || new SettingsController();
 
                     //Track the current page
-                    App.Stages.Main.CurrentPage(SettingsController.PageId);
-                    App.Stages.Main.State.SettingsController = client;
+                    Main.CurrentPage(SettingsController.PageId);
+                    Main.State.SettingsController = client;
 
                     //Define the 'client' namespace, which makes this controller available to the JS console debugger.
                     WinJS.Namespace.define("client", client);

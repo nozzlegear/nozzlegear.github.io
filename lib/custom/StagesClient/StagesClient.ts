@@ -1,5 +1,5 @@
 ﻿/// <reference path="../../../typings/tsd.d.ts" />
-module App.Stages
+namespace Stages
 {
     /**
     A generic Stages service, used by all other services. You should not be using this directly.

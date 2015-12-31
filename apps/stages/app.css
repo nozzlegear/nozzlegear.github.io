@@ -3,7 +3,7 @@
   color: #fff;
 }
 header#appHeader {
-  background-color: #45447b;
+  background-color: #015d90;
   text-align: center;
   padding: 1.5rem 0;
   color: #fff;
@@ -105,7 +105,7 @@ img.img-circle {
   border-radius: 50%;
 }
 img.img-bordered {
-  border: solid 3px #45447b;
+  border: solid 3px #015d90;
 }
 .centered {
   display: block;
@@ -117,7 +117,7 @@ img.img-bordered {
 }
 progress {
   max-width: 50%;
-  color: #45447b;
+  color: #015d90;
   display: block;
 }
 progress.loading {
@@ -190,7 +190,7 @@ progress.left {
 /*#endregion */
 /*#region WinJS SplitView */
 .win-splitview .win-splitview-pane {
-  background-color: #45447b;
+  background-color: #015d90;
   margin: 0;
   padding: 0;
   display: flex;
@@ -225,7 +225,7 @@ progress.left {
 /*#endregion */
 /*#region WinJS AppBar*/
 .win-commandingsurface .win-commandingsurface-actionarea {
-  background-color: #45447b;
+  background-color: #015d90;
 }
 .win-commandimage,
 button:enabled:active .win-commandimage,
@@ -256,6 +256,6 @@ html.win-hoverable.win-navbar.win-navbar-opening button:enabled.win-navbar-invok
   color: #ccc;
 }
 .win-commandingsurface .win-commandingsurface-overflowarea.win-menu {
-  background-color: #45447b;
+  background-color: #015d90;
 }
 /*#endregion*/

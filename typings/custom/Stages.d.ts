@@ -1,6 +1,6 @@
-﻿declare module App.Stages
+﻿declare namespace Stages
 {
-    export module Entities
+    export namespace Entities
     {
         export module SubscriberController
         {

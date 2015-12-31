@@ -1,5 +1,7 @@
 ﻿/// <reference path="../../../typings/tsd.d.ts" />
-module App.Stages
+/// <reference path="./../main.ts" />
+
+namespace Stages
 {
     export class SubscriberController
     {
@@ -20,9 +22,9 @@ module App.Stages
 
         //#region Variables
 
-        private Service = new Stages.AdminSubscriberService(Utils.LocalStorage.Retrieve("X-Stages-API-Key"));
+        private Service = new AdminSubscriberService(Utils.LocalStorage.Retrieve("X-Stages-API-Key"));
 
-        public SubscribedAccounts = ko.observableArray<Stages.Entities.API.Account>();
+        public SubscribedAccounts = ko.observableArray<Entities.API.Account>();
 
         public IsLoading = ko.observable(false);
 
@@ -39,7 +41,7 @@ module App.Stages
             });
         }
 
-        private HandleLoadSuccess = (accounts: Stages.Entities.API.Account[]) =>
+        private HandleLoadSuccess = (accounts: Entities.API.Account[]) =>
         {
             this.SubscribedAccounts(accounts);
             
@@ -163,11 +165,11 @@ module App.Stages
                 },
                 ready: (element, options) =>
                 {
-                    var client = App.Stages.Main.State.SubscriberController || new SubscriberController(options);
+                    var client = Main.State.SubscriberController || new SubscriberController(options);
 
                     //Track the current page
-                    App.Stages.Main.CurrentPage(SubscriberController.PageId);
-                    App.Stages.Main.State.SubscriberController = client;
+                    Main.CurrentPage(SubscriberController.PageId);
+                    Main.State.SubscriberController = client;
                     
                     //Define the 'client' namespace, which makes this controller available to the JS console debugger.
                     WinJS.Namespace.define("client", client);
@@ -176,7 +178,7 @@ module App.Stages
                 },
                 error: (err) =>
                 {
-                    App.Utils.ShowDialog("Error", "Failed to load SubscriberController");
+                    Utils.ShowDialog("Error", "Failed to load SubscriberController");
 
                     console.log("Error loading SubscriberController", err);
                 },

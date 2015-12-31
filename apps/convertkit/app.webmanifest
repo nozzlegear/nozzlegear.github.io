@@ -1,0 +1,21 @@
+﻿{
+  "name": "ConvertKit for Web",
+  "short_name": "ConvertKit",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color":"#45447b",
+  "theme_color": "#45447b",
+  "icons": [{
+    "src": "img/icon.png",
+    "sizes": "16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256",
+    "type": "image/png"
+  }],
+  "splash_screens": [{
+      "src": "img/splashscreen.png",
+      "sizes": "1920x1280",
+	  "type":"image/png"
+    }],
+  "chrome_related_applications": [{
+    "platform": "web"
+  }]
+}
