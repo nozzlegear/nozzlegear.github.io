@@ -3,8 +3,8 @@
   "short_name": "ConvertKit",
   "start_url": "./",
   "display": "standalone",
-  "background_color":"#45447b",
-  "theme_color": "#45447b",
+  "background_color":"#015D90",
+  "theme_color": "#015D90",
   "icons": [{
     "src": "img/icon.png",
     "sizes": "16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256",
