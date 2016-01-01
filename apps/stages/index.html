@@ -61,34 +61,34 @@
         }
     </style>
 </head>
-<body class="win-type-body" data-bind="with: App.Stages">
+<body class="win-type-body" data-bind="with: Stages">
     <div id="splitview" data-bind="winSplitView: { closedDisplayMode: 'none', openedDisplayMode: 'overlay' }">
         <menu class="pane" data-bind="visible: Main.CurrentPage() !== LoginController.PageId">
             <div title="Home"
                  data-bind="winSplitViewCommand: {
                     label: 'Subscribers',
                     icon: 'people',
-                    oninvoked: App.Stages.Main.HandleNavigateToSubscribers},
+                    oninvoked: Stages.Main.HandleNavigateToSubscribers},
                     css: { active: Main.CurrentPage() ===SubscriberController.PageId }"></div>
             <div title="Home"
                  data-bind="winSplitViewCommand: {
                     label: 'Financials',
                     icon: 'tag',
-                    oninvoked: App.Stages.Main.HandleNavigateToFinancials},
+                    oninvoked: Stages.Main.HandleNavigateToFinancials},
                     css: { active: Main.CurrentPage() === FinancialController.PageId }"></div>
             <div id="push-to-bottom">
                 <div>
                     <div data-bind="winSplitViewCommand: {
                         label: 'Settings',
                         icon: 'settings',
-                        oninvoked: App.Stages.Main.HandleNavigateToSettings},
+                        oninvoked: Stages.Main.HandleNavigateToSettings},
                         css: { active: Main.CurrentPage() === SettingsController.PageId }"></div>
                 </div>
             </div>
         </menu>
         <!-- ContentHost is bound by individual page controllers -->
         <!-- ko stopBinding: true -->
-        <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: App.Stages.SubscriberController.PageUrl}"></div>
+        <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: Stages.SubscriberController.PageUrl}"></div>
         <!-- /ko -->
     </div>
     <menu id="appbar" data-bind="winAppBar: {closedDisplayMode: 'compact'}, visible: Main.CurrentPage() !== LoginController.PageId">
