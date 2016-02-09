@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+﻿/// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="./../main.ts" />
 /// <reference path="./../../../lib/custom/ConvertKitClient/ConvertKit.ts" />
 var ConvertKit;

@@ -29,7 +29,7 @@
                  id="data-container"
                  style="display:none;"
                  data-bind="visible: IsLoading() === false">
-            <h1 class="win-type-title" id="total" data-bind="text: '$' + (_.sum(client.SubscribedPlans(), p => p.valueInCents) / 100).toFixed(2)"></h1>
+            <h1 class="win-type-title" id="total" data-bind="text: '$' + (_.sum(client.SubscribedPlans(), p => p.ValueInCents) / 100).toFixed(2)"></h1>
             <h2 class="win-type-subtitle" id="per-month">per month.</h2>
         </section>
     </section>

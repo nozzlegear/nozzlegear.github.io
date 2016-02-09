@@ -17,21 +17,21 @@
             */
             export class Account
             {
-                id: number;
+                Id: number;
 
-                plan: ApplicationPlan;
+                Plan: ApplicationPlan;
 
-                accountOwner: string;
+                AccountOwner: string;
 
-                isSubscribed: boolean;
+                IsSubscribed: boolean;
 
-                dateCreated: Date;
+                DateCreated: Date;
 
-                reasonForCancellation: string;
+                ReasonForCancellation: string;
 
-                shopifyShopName: string;
+                ShopifyShopName: string;
 
-                shopifyShopDomain: string;
+                ShopifyShopDomain: string;
             }
 
             /**
@@ -39,17 +39,17 @@
             */
             export class ApplicationPlan
             {
-                id: string;
+                Id: string;
 
-                stripeId: string;
+                StripeId: string;
 
-                name: string;
+                Name: string;
 
-                valueInCents: number;
+                ValueInCents: number;
 
-                value: string;
+                Value: string;
 
-                memberLimit: number;
+                MemberLimit: number;
             }
         }
     }

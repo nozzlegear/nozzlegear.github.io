@@ -1,4 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
+﻿/// <reference path="../../typings/tsd.d.ts" />
 /// <reference path="./settings/SettingsController.ts" />
 /// <reference path="./login/logincontroller.ts" />
 /// <reference path="./home/homecontroller.ts" />

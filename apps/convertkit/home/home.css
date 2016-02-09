@@ -1,4 +1,4 @@
-section.home .subscribers {
+﻿section.home .subscribers {
   overflow: hidden;
   overflow-y: auto;
   height: calc(100% -  48px);
