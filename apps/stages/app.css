@@ -32,13 +32,13 @@ section.ms-grid {
   max-width: 100%;
 }
 section.with-appbar {
-  height: calc(100% - 135px);
+  height: calc(100% - 48px);
 }
 section.with-title {
   height: calc(100% - 73px);
 }
 section.with-title.with-appbar {
-  height: calc(100% -  208px);
+  height: calc(100% -  121px);
 }
 section .title {
   padding: 0;
