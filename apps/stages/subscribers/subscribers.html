@@ -7,7 +7,7 @@
 </head>
 <body>
     <section role="main" 
-             class="home page-section with-title ms-grid">
+             class="home page-section with-title with-appbar ms-grid">
         <progress class="loading" 
                   style="display:none;" 
                   data-bind="visible: IsLoading() === true"></progress>
@@ -27,7 +27,7 @@
                     <p class="win-type-body name win-type-ellipsis" 
                        data-bind="text: ShopifyShopName"></p>
                     <p class="win-type-body email win-type-ellipsis"
-                       data-bind="text: NextChargeDate ? 'Charging: ' + moment(NextChargeDate).format('MMMM Do, YYYY') : 'Cancelling Soon'"></p>
+                       data-bind="text: NextChargeDate ? 'Charging: ' + moment(NextChargeDate).format('MMM Do, YYYY') : 'Cancelling Soon'"></p>
                 </div>
                 <div class="m-col-5-24 nb hide show-m">
                     <p class="win-type-body created" 
