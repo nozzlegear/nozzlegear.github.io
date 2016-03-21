@@ -26,6 +26,8 @@
                 IsSubscribed: boolean;
 
                 DateCreated: Date;
+                
+                NextChargeDate: Date;
 
                 ReasonForCancellation: string;
 
