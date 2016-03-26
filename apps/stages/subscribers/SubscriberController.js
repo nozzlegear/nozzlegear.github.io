@@ -113,7 +113,7 @@ var Stages;
                 error: function (err) {
                     Utils.ShowDialog("Error", "Failed to load SubscriberController");
                     console.log("Error loading SubscriberController", err);
-                }
+                },
             });
         };
         /**

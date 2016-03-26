@@ -67,7 +67,7 @@ namespace Stages
         
         public GetNextChargeDate = (subscriber: Stages.Entities.API.Account) =>
         {
-            return subscriber.NextChargeDate ? 'Charge: ' + moment(subscriber.NextChargeDate).format('MMMM Do, YYYY') : '(Failed to get charge data)'
+            return subscriber.NextChargeDate ? 'Charge: ' + moment(subscriber.NextChargeDate).format('MMMM Do, YYYY') : '(Failed to get charge data)';
         };
 
         /**
@@ -178,7 +178,7 @@ namespace Stages
                     
                     //Define the 'client' namespace, which makes this controller available to the JS console debugger.
                     WinJS.Namespace.define("client", client);
-
+                    
                     ko.applyBindings(client, element);
                 },
                 error: (err) =>

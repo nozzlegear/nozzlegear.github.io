@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "apps/stages/app.min.js",
+    "inputFiles": [
+      "apps/stages/main.js",
+      "apps/stages/subscribers/SubscriberController.js",
+      "apps/stages/settings/SettingsController.js",
+      "apps/stages/login/LoginController.js",
+      "apps/stages/financials/FinancialController.js",
+      "lib/custom/StagesClient/StagesClient.js",
+      "lib/custom/Utilities/Utilities.js",
+      "lib/custom/Knockout.StopBinding/Knockout.StopBinding.js"
+    ]
+  },
+  {
+    "outputFileName": "apps/stages/app.js",
+    "inputFiles": [
+      "apps/stages/main.js",
+      "apps/stages/subscribers/SubscriberController.js",
+      "apps/stages/settings/SettingsController.js",
+      "apps/stages/login/LoginController.js",
+      "apps/stages/financials/FinancialController.js",
+      "lib/custom/StagesClient/StagesClient.js"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 ﻿CACHE MANIFEST
 
-#version 1.0.7
+#version 1.1.0
 
 # Explicitly cached files
 CACHE:
@@ -12,6 +12,8 @@ app.min.css
 financials/financials.html
 login/login.html
 settings/settings.html
+subscribers/subscribercontroller.js
+subscribers/subscribercontroller.js.map
 subscribers/subscribers.html
 
 # All other resources (e.g. sites) require the user to be online. 
