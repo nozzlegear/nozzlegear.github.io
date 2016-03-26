@@ -64,6 +64,11 @@ namespace Stages
 
             return `https://www.gravatar.com/avatar/{hash}?s=100`;
         };
+        
+        public GetNextChargeDate = (subscriber: Stages.Entities.API.Account) =>
+        {
+            return subscriber.NextChargeDate ? 'Charge: ' + moment(subscriber.NextChargeDate).format('MMMM Do, YYYY') : '(Failed to get charge data)'
+        };
 
         /**
         A client restored from JSON does not contain observables or functions. Use this 
