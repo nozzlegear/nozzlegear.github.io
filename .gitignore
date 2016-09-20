@@ -200,3 +200,8 @@ FakesAssemblies/
 
 # Ignore private files
 *.private.*
+
+# TS compilation cache
+.awcache
+ 
+#

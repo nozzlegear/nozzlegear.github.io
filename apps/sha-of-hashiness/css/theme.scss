@@ -1,0 +1,50 @@
+$appBarHeight: 64px;
+
+body {
+    margin: 0;
+}
+
+main, container {
+    display:block;
+}
+
+main#sha-of-hashiness {
+    section#controls {
+        padding: 0 1rem;
+        height: calc(100vh - #{$appBarHeight});
+        display:flex;
+        flex-direction: column;
+
+        div#top{
+            flex: 1;
+
+            .controls {
+                display:flex;
+                flex-direction: row;
+                align-items: flex-end;
+
+                .algorithm-picker {
+                    flex: 1;
+                }
+
+                .upper-toggle {
+                    margin-left: 4rem;
+                }
+            }
+        }
+
+        form#bottom {
+            display:flex;
+            flex-direction: row;
+            align-items: baseline;
+
+            .input {
+                flex: 1;
+            }
+
+            .hash-button {
+                margin-left: 4rem;
+            }
+        }
+    }
+}
