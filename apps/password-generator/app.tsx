@@ -86,7 +86,7 @@ export default class ShaOfHashiness extends AutoPropComponent<IProps, IState> {
     private resultField: TextField;
 
     private hash(input: string, secretKey: string, output: "base64" | "hex") {
-        let hash = Crypto.HmacSHA256(input, secretKey);
+        let hash = Crypto.HmacSHA256(input.toLowerCase(), secretKey);
 
         if (output === "base64") {
             hash = Crypto.enc.Base64.stringify(hash);
@@ -151,7 +151,7 @@ export default class ShaOfHashiness extends AutoPropComponent<IProps, IState> {
                     <p>
                         {"This tool calculates a unique password by running "}
                         <strong>{"'username@domain' "}</strong>
-                        {"through an HMAC-SHA256 hash salted with your master password. As long as you know your username and your master password, you'll always generate the same unique, strong password for any website, with no need to manage password databases."}
+                        {"(to lower case) through an HMAC-SHA256 hash salted with your master password. As long as you know your username and your master password, you'll always generate the same unique, strong password for any website, with no need to manage password databases."}
                     </p>
                 </Dialog>
             )
