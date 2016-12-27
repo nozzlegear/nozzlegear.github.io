@@ -16,6 +16,8 @@ import {
     Snackbar,
     SelectField,
     MenuItem,
+    FlatButton,
+    Dialog,
 } from "material-ui";
 
 // Material UI
@@ -43,6 +45,7 @@ export interface IState {
     password?: string;
     domain?: string;
     output?: "base64" | "hex";
+    dialogOpen?: boolean;
     successBarOpen?: boolean;
     errorBarOpen?: boolean;
 }
@@ -64,6 +67,7 @@ export default class ShaOfHashiness extends AutoPropComponent<IProps, IState> {
             password: "",
             domain: "",
             output: "hex",
+            dialogOpen: false,
             successBarOpen: false,
             errorBarOpen: false,
         }
@@ -133,24 +137,42 @@ export default class ShaOfHashiness extends AutoPropComponent<IProps, IState> {
     }
 
     public render() {
+        let dialog;
+
+        if (this.state.dialogOpen) {
+            dialog = (
+                <Dialog
+                    title={"About"}
+                    open={true}
+                    modal={true}
+                    autoScrollBodyContent={true}
+                    actions={[<FlatButton key="close-button" label={"Close"} onTouchTap={e => this.setState({ dialogOpen: false })} />]}
+                    onRequestClose={e => this.setState({ dialogOpen: false })}>
+                    <p>
+                        {"This tool calculates a unique password by running "}
+                        <strong>{"'username@domain' "}</strong>
+                        {"through an HMAC-SHA256 hash salted with your master password. As long as you know your username and your master password, you'll always generate the same unique, strong password for any website, with no need to manage password databases."}
+                    </p>
+                </Dialog>
+            )
+        }
+
         return (
             <MuiThemeProvider muiTheme={theme}>
                 <main id="app">
-                    <AppBar title="Sha of Hashiness" iconStyleLeft={{ display: "none" } as any} />
+                    <AppBar
+                        title="Password Generator"
+                        iconStyleLeft={{ display: "none" } as any}
+                        iconElementRight={<FlatButton label="About" />}
+                        onRightIconButtonTouchTap={e => this.setState({ dialogOpen: true })} />
+                    {dialog}
                     <section id="controls">
                         <div id="top">
-                            <p>
-                                {"This tool calculates a unique password by running "}
-                                <strong>{"'username@domain' "}</strong>
-                                {"through an HMAC-SHA256 hash salted with your master password. As long as you know your username and your master password, you'll always generate the same unique, strong password for any website, with no need to manage password databases."}
-                            </p>
-                        </div>
-                        <div id="middle">
                             <div>
-                                <SelectField 
-                                    fullWidth={true} 
-                                    floatingLabelText={"Output Type"} 
-                                    value={this.state.output} 
+                                <SelectField
+                                    fullWidth={true}
+                                    floatingLabelText={"Output Type"}
+                                    value={this.state.output}
                                     onChange={(e, i, v) => this.transformState(s => s.output = v)}>
                                     <MenuItem value={"hex"} primaryText={"Hex"} />
                                     <MenuItem value={"base64"} primaryText={"Base64"} />
@@ -178,7 +200,7 @@ export default class ShaOfHashiness extends AutoPropComponent<IProps, IState> {
                                 primary={true}
                                 fullWidth={true}
                                 onTouchTap={(e) => this.handleHash(e)}
-                                label="Hash it" />
+                                label="Generate" />
                         </form>
                     </section>
                     <Snackbar open={this.state.successBarOpen} message={"Copied to clipboard."} autoHideDuration={7000} onRequestClose={(e) => this.setState({ successBarOpen: false })} />
