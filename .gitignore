@@ -204,4 +204,5 @@ FakesAssemblies/
 # TS compilation cache
 .awcache
  
-#
+# Temp files
+temp/

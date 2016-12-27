@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Password Generator</title>    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Roboto';
+    </style> 
+
+    <!-- Hide the mobile navigation bar when this page is used as a bookmarked app -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <!-- Offline manifests -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Disable search engine indexing -->
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./dist/theme.css" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="./img/favicons/safari-pinned-tab.svg" color="#00897B">
+    <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+    <meta name="theme-color" content="rgb(0,137,123)">
+</head>
+    <body>
+        <noscript>
+            <h1>WARNING: This site requires JavaScript. Please visit <a href="http://www.enable-javascript.com/">this guide</a> to learn how to enable JavaScript on your machine, then reload this page.</h1>
+        </noscript>
+        <container id="contenthost"></container>
+        <div style="display:none">
+            <script src="./dist/app.js"></script>
+        </div>
+    </body>
+</html>
